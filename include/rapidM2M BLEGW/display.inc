@@ -22,7 +22,17 @@ const
   DISPLAY_APP_STATE_CHECK_GSM,     /* u32Count = time (0-5min) [s] */
   DISPLAY_APP_STATE_RETRY,         /* u32Count = retry count */
   DISPLAY_APP_STATE_BLE_CONNECT,   /* u32Count = conn. bar (1-3) */
+  DISPLAY_APP_STATE_CONNECT_PCM,   /* u32Count = conn. bar (1-3) */
+  DISPLAY_APP_STATE_SHOW_SETUP,    /* show setup mode with last RSSI values */
+  DISPLAY_APP_STATE_PCM_OK,        /* ok for myDatalogPCM */
+  DISPLAY_APP_STATE_SERVICE_MD,    /* service module */
+  DISPLAY_APP_STATE_TRANSPORT,     /* transport mode */
+  DISPLAY_APP_STATE_SPLASH_SCREEN, /* splash screen */
 };
+
+#define DISPLAY_STATE_PCM_FLAG 0x01 /* flag for PCM communication is ok */
+#define DISPLAY_STATE_BLE_FLAG 0x02 /* flag for BLE connection is ok */
+#define DISPLAY_STATE_SRV_FLAG 0x04 /* flag for last server connection was ok */
 
 /**
  * <summary>
@@ -30,6 +40,7 @@ const
  * </summary>
  * <param name="Name">
  *   Name of Sensor / Application.
+ *   Text of SplashScreen.
  * </param>
  * <param name="State">
  *   State of device (see App state.).
@@ -55,8 +66,52 @@ const
  * <param name="Value">
  *   Value [ppm].
  * </param>
+ * <param name="RSSI values of startup mode">
+ *   array[6] of RSSI [dB].
+ * </param>
+ * <param name="PCMState">
+ *   PCMState of PCM:
+ *   DISPLAY_STATE_PCM_FLAG - communication with PCM ok
+ *   DISPLAY_STATE_BLE_FLAG - communication with BLE module ok
+ *   DISPLAY_STATE_SRV_FLAG - communication with server ok
+ * </param>
+ * <param name="Unit">
+ *   Unit to display
+ * </param>
+ * <param name="SerNumBig">
+ *   SerNum to display at Module Calibration/Service
+ * </param>
+ * <param name="SensorCount">
+ *   count of actual sensor displayed (1 - SensorMax)
+ * </param>
+ * <param name="SensorMax">
+ *   count of maximum sensors inserted
+ * </param>
+ * <param name="Text1">
+ *   first columne of SplashScreen
+ * </param>
+ * <param name="Text2">
+ *   second columne of SplashScreen
+ * </param>
  */
-#define TDisplay[.Name{20}, .State, .Count, .GSM_Signal, .SOC, .Temp, .Service, .Calib, .Value, .SerNum{20}]
+#define TDisplay[.Name{20}, 
+                    .State, 
+                    .Count, 
+                    .GSM_Signal, 
+                    .SOC, 
+                    .Temp, 
+                    .Service, 
+                    .Calib, 
+                    .Value, 
+                    .SerNum{20}, 
+                    .RSSI[6], 
+                    .PCMState, 
+                    .Unit{8}, 
+                    .SerNumBig{20}, 
+                    .SensorCount, 
+                    .SensorMax,
+                    .Text1{20},
+                    .Text2{20}]
 
 /**
  * <summary>

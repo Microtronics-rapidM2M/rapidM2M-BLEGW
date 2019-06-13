@@ -241,7 +241,11 @@ native BLE_GetState();
  * </param>
  *
  * <returns>
- *   <em>OK</em> if successful, otherwise <em>ERROR</em>.
+ *    <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *     <li><em>ERROR</em> - if error.</li>
+ *     <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *   </ul>
  * </returns>
  */
 native BLE_Scan(time = 10, flags = 0);
@@ -260,7 +264,11 @@ native BLE_Scan(time = 10, flags = 0);
  * </param>
  *
  * <returns>
- *   Connection handle if successful, otherwise <em>ERROR</em>.
+ *  <ul>
+ *    <li>Connection handle if successful</li>
+ *    <li><em>ERROR</em> - if error.</li>
+ *    <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *  </ul>
  * </returns>
  */
 native BLE_Connect(addr{6}, itv = -1);
@@ -275,9 +283,11 @@ native BLE_Connect(addr{6}, itv = -1);
  * </param>
  *
  * <returns>
- *   <em>OK</em> if successful
- *   <em>ERROR</em> if error
- *   <em>ERROR-1</em> if BLE device isn't connected.
+ *   <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *     <li><em>ERROR</em> - if error.</li>
+ *     <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *   </ul>
  * </returns>
  */
 native BLE_Disconnect(connhandle = 0);
@@ -319,9 +329,11 @@ native BLE_GetConnState(connhandle = 0);
  * </param>
  *
  * <returns>
- *   <em>OK</em> if successful
- *   <em>ERROR</em> if error
- *   <em>ERROR-1</em> if BLE device isn't connected.
+ *    <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *     <li><em>ERROR</em> - if error.</li>
+ *     <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *   </ul>
  * </returns>
  */
 native BLE_Write(connhandle = 0, handle, const data{}, size);
@@ -340,9 +352,11 @@ native BLE_Write(connhandle = 0, handle, const data{}, size);
  * </param>
  *
  * <returns>
- *   <em>OK</em> if successful
- *   <em>ERROR</em> if error
- *   <em>ERROR-1</em> if BLE device isn't connected.
+ *    <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *     <li><em>ERROR</em> - if error.</li>
+ *     <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *   </ul>
  * </returns>
  */
 native BLE_Read(connhandle = 0, handle);
@@ -365,9 +379,11 @@ native BLE_Read(connhandle = 0, handle);
  * </param>
  *
  * <returns>
- *   <em>OK</em> if successful
- *   <em>ERROR</em> if error
- *   <em>ERROR-1</em> if BLE device isn't connected.
+ *    <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *     <li><em>ERROR</em> - if error.</li>
+ *     <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *   </ul>
  * </returns>
  */
 native BLE_ChgConItv(connhandle = 0, conitv);
@@ -386,10 +402,12 @@ native BLE_ChgConItv(connhandle = 0, conitv);
  * </param>
  *
  * <returns>
- *   <em>OK</em> if successful
- *   <em>ERROR</em> if error
- *   <em>ERROR-1</em> if busy
- *   <em>OK+1</em> if adv. disabled
+ *   <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *     <li><em>ERROR</em> - if error.</li>
+ *     <li><em>ERROR-1</em> - if BLE is busy because of background connection </li>
+ *     <li><em>OK+1</em> - if adv.disable </li>
+ *   </ul>
  * </returns>
  */
 native BLE_SetScanResponseData(const data{}, size);

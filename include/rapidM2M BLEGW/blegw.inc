@@ -411,3 +411,21 @@ native BLE_ChgConItv(connhandle = 0, conitv);
  * </returns>
  */
 native BLE_SetScanResponseData(const data{}, size);
+
+/**
+ * <summary>
+ *   Activate or deactivate sensor supply.
+ * </summary>
+ *
+ * <param name="onOff">
+ *   0 means off, != 0 means on.
+ *   sensor supply is also on if modem is enabled!
+ * </param>
+ *
+ * <returns>
+ *   <ul>
+ *     <li><em>OK</em> - if successful.</li>
+ *   </ul>
+ * </returns>
+ */
+native BLE_ActivateSensorsupply(onOff);

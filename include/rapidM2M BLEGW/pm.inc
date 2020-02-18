@@ -124,8 +124,7 @@ const
  * <param name="ChargingMode">
  *   see Charger Modes
  * </param>
- * </param>
- * <param name="Description{">
+ * <param name="Description">
  *   Description of battery
  * </param>
  */
